@@ -1,5 +1,8 @@
 From nvcr.io/nvidia/pytorch:18.06-py3
 
+ARG USER_ID
+ARG GROUP_ID
+
 # install opensilde
 RUN apt-get update --fix-missing && \
   apt-get install -y python3-openslide
