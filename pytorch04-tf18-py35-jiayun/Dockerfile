@@ -3,14 +3,6 @@ From nvcr.io/nvidia/pytorch:18.06-py3
 ARG USER_ID
 ARG GROUP_ID
 
-RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
-    groupadd -g ${GROUP_ID} docker-user &&\
-    useradd -l -u ${USER_ID} -g docker-user docker-user &&\
-    install -d -m 0755 -o docker-user -g docker-user /home/docker-user \
-;fi
-
-USER docker-user
-
 # install opensilde
 RUN apt-get update --fix-missing && \
   apt-get install -y python3-openslide
@@ -33,6 +25,14 @@ RUN . /opt/conda/etc/profile.d/conda.sh && \
  jupyter=1.0.0 joblib=0.13.2 && \
  pip install openslide-python==1.1.1 lmdb numpy gpustat  && \
  pip install tensorflow-gpu==1.8.0
+
+RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
+    groupadd -g ${GROUP_ID} docker-user &&\
+    useradd -l -u ${USER_ID} -g docker-user docker-user &&\
+    install -d -m 0755 -o docker-user -g docker-user /home/docker-user \
+;fi
+
+USER docker-user
 
 # RUN .  /opt/conda/etc/profile.d/conda.sh && \
 RUN  echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
