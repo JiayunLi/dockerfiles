@@ -24,7 +24,8 @@ RUN . /opt/conda/etc/profile.d/conda.sh && \
  scipy=1.1.0 opencv=3.4.1 && \
  jupyter=1.0.0 joblib=0.13.2 && \
  pip install openslide-python==1.1.1 lmdb numpy gpustat  && \
- pip install tensorflow-gpu==1.8.0
+ pip install tensorflow-gpu==1.8.0 && \
+ pip install spams
 
 RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
     groupadd -g ${GROUP_ID} docker-user &&\
@@ -37,4 +38,3 @@ USER docker-user
 # RUN .  /opt/conda/etc/profile.d/conda.sh && \
 RUN  echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
  echo "conda activate py35" >> ~/.bashrc
-
