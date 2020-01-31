@@ -11,7 +11,7 @@ RUN apt-get update --fix-missing && \
 RUN pip install spams && \
 conda install -c conda-forge tqdm && \
 conda install opencv && \
-pip install h5py lmdb openslide-python==1.1.1
+pip install h5py lmdb openslide-python==1.1.1 tensorboardX
 
 RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
     groupadd -g ${GROUP_ID} docker-user &&\
