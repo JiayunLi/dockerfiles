@@ -1,4 +1,4 @@
-From nvcr.io/nvidia/pytorch:19.10-py3
+From nvcr.io/nvidia/pytorch:19.06-py3
 
 ARG USER_ID
 ARG GROUP_ID
@@ -7,9 +7,11 @@ ARG GROUP_ID
 RUN apt-get update --fix-missing && \
   apt-get install -y python3-openslide
 
-# activate conda and instqll packages
+# activate conda and install packages
 RUN pip install spams && \
-conda install -c conda-forge tqdm
+conda install -c conda-forge tqdm && \
+conda install opencv && \
+pip install h5py lmdb
 
 RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
     groupadd -g ${GROUP_ID} docker-user &&\
