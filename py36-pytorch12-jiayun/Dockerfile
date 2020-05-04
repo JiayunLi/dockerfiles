@@ -5,13 +5,14 @@ ARG GROUP_ID
 
 # install opensilde
 RUN apt-get update --fix-missing && \
-  apt-get install -y python3-openslide
+  apt-get install -y python3-openslide && \
+  apt install -y tmux
 
 # activate conda and install packages
-RUN pip install spams && \
+RUN pip install spams seaborn scikit-image scikit-learn && \
 conda install -c conda-forge tqdm && \
-conda install opencv && \
-pip install h5py lmdb openslide-python==1.1.1 tensorboardX Pillow==6.1 tensorboard
+conda install opencv pixman=0.36.0 && \
+pip install h5py lmdb openslide-python tensorboardX Pillow tensorboard
 
 RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
     groupadd -g ${GROUP_ID} docker-user &&\
