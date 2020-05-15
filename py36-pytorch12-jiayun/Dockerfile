@@ -13,7 +13,8 @@ RUN apt-get update --fix-missing && \
 RUN pip install spams seaborn scikit-image scikit-learn && \
 conda install -c conda-forge tqdm && \
 conda install opencv pixman=0.36.0 && \
-pip install h5py lmdb openslide-python tensorboardX Pillow==6.1.0 tensorboard
+# pip install h5py lmdb openslide-python tensorboardX Pillow==6.1.0 tensorboard
+pip install h5py lmdb tensorboardX Pillow==6.1.0 tensorboard
 
 RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
     groupadd -g ${GROUP_ID} docker-user &&\
