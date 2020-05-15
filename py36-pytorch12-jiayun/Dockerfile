@@ -5,6 +5,7 @@ ARG GROUP_ID
 
 # install opensilde
 RUN apt-get update --fix-missing && \
+  apt-get install -y openslide-tools && \
   apt-get install -y python3-openslide && \
   apt install -y tmux
 
