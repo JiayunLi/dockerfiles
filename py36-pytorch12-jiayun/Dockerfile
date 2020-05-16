@@ -3,6 +3,8 @@ From nvcr.io/nvidia/pytorch:19.06-py3
 ARG USER_ID
 ARG GROUP_ID
 
+RUN apt-get purge --auto-remove python-openslide
+
 # install opensilde
 RUN apt-get update --fix-missing && \
   apt-get install -y openslide-tools && \
