@@ -1,9 +1,7 @@
 From nvcr.io/nvidia/pytorch:19.06-py3
 
-ARG USER_ID
-ARG GROUP_ID
-
-RUN apt-get purge --auto-remove python-openslide
+# ARG USER_ID
+# ARG GROUP_ID
 
 # install opensilde
 RUN apt-get update --fix-missing && \
@@ -16,16 +14,10 @@ conda install -c conda-forge tqdm && \
 conda install opencv pixman=0.36.0 && \
 pip install h5py lmdb openslide-python==1.1.1 tensorboardX Pillow==6.1.0 tensorboard
 
-RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
-    groupadd -g ${GROUP_ID} docker-user &&\
-    useradd -l -u ${USER_ID} -g docker-user docker-user &&\
-    install -d -m 0755 -o docker-user -g docker-user /home/docker-user \
-;fi
+# RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
+#     groupadd -g ${GROUP_ID} docker-user &&\
+#     useradd -l -u ${USER_ID} -g docker-user docker-user &&\
+#     install -d -m 0755 -o docker-user -g docker-user /home/docker-user \
+# ;fi
 
-USER docker-user
-# openslide-python==1.1.1
-# scikit-image==0.15.0
-# scikit-learn==0.21.3
-# numpy==1.17.4
-# scipy==1.3.2
-# matplotlib==3.1.2
+# USER docker-user
