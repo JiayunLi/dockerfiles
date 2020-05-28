@@ -9,7 +9,7 @@ RUN apt-get update --fix-missing && \
   apt install -y tmux
 
 # activate conda and install packages
-RUN pip install spams seaborn scikit-image scikit-learn && \
+RUN pip install spams seaborn scikit-image==0.16.2 scikit-learn && \
 conda install -c conda-forge tqdm && \
 conda install -c pytorch -c fastai fastai && \
 conda install opencv pixman=0.36.0 && \
