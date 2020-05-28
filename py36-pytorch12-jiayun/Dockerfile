@@ -8,10 +8,8 @@ RUN apt-get update --fix-missing && \
   apt-get install -y openslide-tools && \
   apt install -y tmux
 
-RUN pip3 install imagecodecs
-
 # activate conda and install packages
-RUN pip install spams seaborn scikit-image==0.16.2 scikit-learn tifffile==2020.5.11 && \
+RUN pip install spams seaborn scikit-image==0.16.2 scikit-learn && \
 conda install -c conda-forge tqdm && \
 conda install -c pytorch -c fastai fastai && \
 conda install opencv pixman=0.36.0 && \
