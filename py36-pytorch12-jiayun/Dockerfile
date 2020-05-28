@@ -16,6 +16,7 @@ conda install -c conda-forge ipywidgets && \
 conda install -c conda-forge libaec && \
 conda install opencv pixman=0.36.0 && \
 conda install -c pytorch -c fastai fastai && \
+pip install -U pip && \
 pip install h5py lmdb openslide-python==1.1.1 tensorboardX Pillow==6.1.0 tensorboard && \
 pip install --upgrade jupyter_client && \
 pip install tifffile imagecodecs
