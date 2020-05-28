@@ -7,12 +7,12 @@ RUN apt-get update --fix-missing && \
  apt-get install -y python3-openslide &&\
  apt-get install -y tmux
 # activate conda and install packages
-RUN pip install spams seaborn scikit-image scikit-learn && \
+RUN pip install spams seaborn scikit-image==0.16.2 scikit-learn && \
 conda install -c conda-forge tqdm && \
 conda install -c conda-forge ipywidgets && \
 conda install opencv pixman=0.36.0 && \
 conda install -c pytorch -c fastai fastai && \
-pip install h5py lmdb openslide-python tensorboardX Pillow tensorboard && \
+pip install h5py lmdb openslide-python==1.1.1 tensorboardX Pillow tensorboard && \
 pip install --upgrade jupyter_client && \
 pip install -U pip && \
 pip install tifffile imagecodecs scikit-build blosc
