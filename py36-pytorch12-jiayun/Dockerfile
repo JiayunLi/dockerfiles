@@ -6,7 +6,9 @@ ARG GROUP_ID
 # install opensilde
 RUN apt-get update --fix-missing && \
  apt-get install -y python3-openslide &&\
- apt-get install -y tmux
+ apt-get install -y tmux && \
+ apt-get install -y libaec-dev
+ 
 # activate conda and install packages
 RUN pip install spams seaborn scikit-image scikit-learn && \
 conda install -c conda-forge tqdm && \
