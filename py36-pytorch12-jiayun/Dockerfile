@@ -15,7 +15,7 @@ conda install -c pytorch -c fastai fastai && \
 pip install h5py lmdb openslide-python==1.1.1 tensorboardX Pillow tensorboard && \
 pip install --upgrade jupyter_client && \
 pip install -U pip && \
-pip install tifffile imagecodecs scikit-build blosc
+pip install tifffile imagecodecs scikit-build blosc && \
 pip install histomicstk --find-links https://girder.github.io/large_image_wheels
 RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
   groupadd -g ${GROUP_ID} docker-user &&\
